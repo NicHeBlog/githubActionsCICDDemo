@@ -5,5 +5,5 @@
         <members>HelloGithubActionsTest</members>
         <name>ApexClass</name>
     </types>
-    <version>55.0</version>
+    <version>54.0</version>
 </Package>
