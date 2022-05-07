@@ -28,12 +28,12 @@ jobs:
     - name: Authenticate DevHub
       run: |
         echo "${SALESFORCE_JWT_SECRET_KEY}" > server.key
-        node_modules/sfdx-cli/bin/run force:auth:jwt:grant --clientid ${{ secrets.SALESFORCE_CONSUMER_KEY }} --jwtkeyfile server.key --username ${{ secrets.SALESFORCE_DEVHUB_USERNAME}} --setdefaultdevhubusername -a devhub
+        node_modules/sfdx-cli/bin/run force:auth:jwt:grant --clientid ${{ secrets.SALESFORCE_CONSUMER_KEY }} --jwtkeyfile server.key --username ${{ secrets.SALESFORCE_DEVHUB_USERNAME}} --setdefaultdevhubusername -a hening@sfdc.com
       env:
         SALESFORCE_JWT_SECRET_KEY: ${{ secrets.SALESFORCE_JWT_SECRET_KEY }}
       
     - name: Define CI org
-      run: node_modules/sfdx-cli/bin/run force:org:create -v devhub -s -f config/project-scratch-def.json -a ciorg -d 1
+      run: node_modules/sfdx-cli/bin/run force:org:create -v hening@sfdc.com -s -f config/project-scratch-def.json -a ciorg -d 1
 
     - name: Deploy source
       run: node_modules/sfdx-cli/bin/run force:source:push -u ciorg
