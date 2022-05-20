@@ -34,8 +34,8 @@ jobs:
         run: echo "placehoder for sfdx scranner!"
       
       # Prettier formatting check
-      - name: "Verify Code format with Prettier"
-        run: npm run prettier:verify
+      #- name: "Verify Code format with Prettier"
+      #  run: npm run prettier:verify
 
       # Linting Check
       - name: "Lint Aura & LWC"
