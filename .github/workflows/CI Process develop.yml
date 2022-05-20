@@ -4,11 +4,31 @@ on:
     branches: [develop]
     paths:
         - 'force-app/**'
+
 jobs:
-  SFDX-CLI-Deploy:
+  secret-formatting-linting-unittesting:
     runs-on: ubuntu-latest
     steps:
-      - run: echo "🐧 GitHub Action running on ${{ runner.os }}"
-      - run: echo "🔎 Retrieving ${{ github.ref }} from ${{ github.repository }}."
-      - uses: actions/checkout@v2
-      - run: npm install sfdx-cli -g
+      #Checkout code 
+      - name: 'Checkout source code'
+        uses: actions/checkout@v2
+      
+      #Install npm dependency for Prettier and Jest part 
+      - name: 'Install npm dependency'
+        run: npm install
+
+      #secret scran.
+      - name: 'Run Secret Scran'
+        run: echo "placehoder for sfdx scranner!"
+      
+      # Prettier formatting check
+      - name: "Verify Code format with Prettier"
+        run: npm run prettier:verify
+
+      # Linting Check
+      - name: "Lint Aura & LWC"
+        run: npm run lint
+
+      # Front-end unit test
+      - name: "Unit test Aura and LWC"
+        run: npm run test:unit:coverage
