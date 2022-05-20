@@ -4,11 +4,30 @@ on:
     branches: [develop]
     paths:
         - 'force-app/**'
+
 jobs:
-  SFDX-CLI-Deploy:
+  secret-scan:
     runs-on: ubuntu-latest
     steps:
-      - run: echo "🐧 GitHub Action running on ${{ runner.os }}"
-      - run: echo "🔎 Retrieving ${{ github.ref }} from ${{ github.repository }}."
-      - uses: actions/checkout@v2
-      - run: npm install sfdx-cli -g
+      - run: echo "placehoder for sfdx scranner!"
+
+  formating-check:
+    runs-on: ubuntu-latest
+    #needs: secret-scan
+    steps:
+      - name: "Verify Code format with Prettier"
+      - run: npm run prettier:verify
+
+  linting-check:
+    runs-on: ubuntu-latest
+    #needs: secret-scan
+    steps:
+      - name: "Lint Aura & LWC"
+      - run: npm run lint
+
+  lwc-jest-test:
+    runs-on: ubuntu-latest
+    #needs: secret-scan
+    steps:
+      - name: "Unit test Aura and LWC"
+      - run: npm run test:unit:coverage
