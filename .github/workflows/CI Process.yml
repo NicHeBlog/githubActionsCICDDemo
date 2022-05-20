@@ -1,5 +1,9 @@
 name: SFDX-CLI Deploy from Repository
-on: [push]
+on: 
+  push:
+    branches: [master]
+    paths:
+        - 'force-app/**'
 jobs:
   SFDX-CLI-Deploy:
     runs-on: ubuntu-latest
