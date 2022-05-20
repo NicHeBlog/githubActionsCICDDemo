@@ -13,20 +13,8 @@ jobs:
       - name: 'Checkout source code'
         uses: actions/checkout@v2
       
-      # Cache node_modules to speed up the process
-      - name: Restore node_modules cache
-        id: cache-npm
-        uses: actions/cache@v1
-        with:
-            path: node_modules
-            key: npm-${{ hashFiles('**/package-lock.json') }}
-            restore-keys: |
-                npm-${{ env.cache-name }}-
-                npm-
-      
       #Install npm dependency for Prettier and Jest part 
       - name: 'Install npm dependency'
-        if: steps.cache-npm.outputs.cache-hit != 'true'
         run: npm install
 
       #secret scran.
@@ -34,8 +22,8 @@ jobs:
         run: echo "placehoder for sfdx scranner!"
       
       # Prettier formatting check
-      #- name: "Verify Code format with Prettier"
-      #  run: npm run prettier:verify
+      - name: "Verify Code format with Prettier"
+        run: npm run prettier:verify
 
       # Linting Check
       - name: "Lint Aura & LWC"
