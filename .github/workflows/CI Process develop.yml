@@ -27,7 +27,7 @@ jobs:
       #Install npm dependency for Prettier and Jest part 
       - name: 'Install npm dependency'
         if: steps.cache-npm.outputs.cache-hit != 'true'
-        run: npm ci
+        run: npm install
 
       #secret scran.
       - name: 'Run Secret Scran'
