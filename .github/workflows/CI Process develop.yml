@@ -6,28 +6,29 @@ on:
         - 'force-app/**'
 
 jobs:
-  secret-scan:
+  secret-formatting-linting-unittesting:
     runs-on: ubuntu-latest
     steps:
-      - run: echo "placehoder for sfdx scranner!"
+      #Checkout code 
+      - name: 'Checkout source code'
+        uses: actions/checkout@v2
+      
+      #Install npm dependency for Prettier and Jest part 
+      - name: 'Install npm dependency'
+        run: npm install
 
-  formating-check:
-    runs-on: ubuntu-latest
-    #needs: secret-scan
-    steps:
+      #secret scran.
+      - name: 'Run Secret Scran'
+        run: echo "placehoder for sfdx scranner!"
+      
+      # Prettier formatting check
       - name: "Verify Code format with Prettier"
         run: npm run prettier:verify
 
-  linting-check:
-    runs-on: ubuntu-latest
-    #needs: secret-scan
-    steps:
+      # Linting Check
       - name: "Lint Aura & LWC"
         run: npm run lint
 
-  lwc-jest-test:
-    runs-on: ubuntu-latest
-    #needs: secret-scan
-    steps:
+      # Front-end unit test
       - name: "Unit test Aura and LWC"
         run: npm run test:unit:coverage
