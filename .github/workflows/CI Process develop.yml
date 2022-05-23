@@ -20,14 +20,14 @@ jobs:
       #secret scran.
       - name: 'Run Secret Scran'
         run: echo "placehoder for sfdx scranner!"
-      
-      # Prettier formatting check
-      - name: "Verify Code format with Prettier"
-        run: npm run prettier:verify
 
       # Linting Check
       - name: "Lint Aura & LWC"
         run: npm run lint
+      
+      # Prettier formatting check
+      - name: "Verify Code format with Prettier"
+        run: npm run prettier:verify
 
       # Front-end unit test
       - name: "Unit test Aura and LWC"
